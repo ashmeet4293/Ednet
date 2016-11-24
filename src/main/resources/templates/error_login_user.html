@@ -1,26 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="layout :: site-head">
     <title>ERROR PAGE</title>
 </head>
 <body>
-
-<div th:replace="layout :: menubar"></div>
-
-
-
-	
-	
+<div th:replace="layout :: menubar"></div>	
 	<div th:if="${message}">
 		<h2 th:text="${message}"/>
-	</div>
-
- 
-		
-
-	
-	<div th:replace="layout :: javascript-load"></div>
-
+	</div>	
+<div th:replace="layout :: javascript-load"></div>
 </body>
 </html>

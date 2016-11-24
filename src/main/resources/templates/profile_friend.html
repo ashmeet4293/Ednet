@@ -1,52 +1,20 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: site-head"></head>
-
 <body>
-
 	<div>
 		<div th:replace="layout :: menubar"></div>
 	</div>
-
 	<div class="full_page">
 		<div class="row">
 			<div class="col-lg-7 col-md-7">
-
 				<div class="friend_leftsider1">
-
-
 					<div class="row profile_heading5">
-
-
 						<div class="user_profile_menubar_full">
-							<div th:if="${paramUser.profilePicId != 0}">
-								<div class="user_profile_menubar_left">
-									<img src="../static/images/sylhet.jpg"
-										class="img-responsive img-rounded"
-										th:src="@{/images/sylhet.jpg}" />
-								</div>
+							<!-- Start Param User Picture -->
+							<div th:replace="layouts/paramuser_top_left_pic :: param-user-top-left-picture">
 							</div>
-
-							<div th:unless="${paramUser.profilePicId != 0}">
-								<div th:if="${paramUser.gender == 'Male'}">
-									<div class="user_profile_menubar_left">
-										<img src="../static/images/profile_male.jpg"
-											class="img-responsive img-rounded"
-											th:src="@{/images/profile_male.jpg}" />
-									</div>
-
-								</div>
-
-								<div th:unless="${paramUser.gender == 'Male'}">
-									<div class="user_profile_menubar_left">
-										<img src="../static/images/profile_female.jpg"
-											class="img-responsive img-rounded"
-											th:src="@{/images/profile_female.jpg}" />
-									</div>
-
-								</div>
-
-							</div>
+							<!-- End Param User Picture -->
 							<div class="row user_profile_menubar_right">
 								<a
 									th:href="@{/users/{username}(username=${paramUser.userName})}">
@@ -57,7 +25,6 @@
 											Name</span>
 									</div>
 								</a>
-
 								<div class="col-lg-12-col-md-12 col-sm-12 ">
 									<a
 										th:href="@{/users/{username}/picture_gallery(username=${paramUser.userName})}"><div
@@ -68,11 +35,7 @@
 								</div>
 							</div>
 						</div>
-
-
 						<div class="row">
-
-
 							<div class="col-lg-12 col-md-12  col-sm-12 ">
 								<div id="tabs">
 									<ul>
@@ -84,11 +47,8 @@
 										<li><a href="#tabs-6">Groups</a></li>
 									</ul>
 									<div id="tabs-1">
-
 										<div>
-
 											<div class="profile_area_1_right">
-
 												<div class="panel naz_panel">
 													<div class="panel-heading">Basic Profile Information</div>
 													<div class="panel-body tab_list_table_body ">
@@ -97,12 +57,10 @@
 																<td>Gender</td>
 																<td th:text="${paramUser.gender}">Gender</td>
 															</tr>
-
 															<tr>
 																<td>Email</td>
 																<td th:text="${paramUser.email}">Email</td>
 															</tr>
-
 															<tr>
 																<td>User Point</td>
 																<td th:text="${paramUser.userPoint}">User Point</td>
@@ -135,38 +93,20 @@
 														<a href="">More Friends Information</a>
 													</div>
 												</div>
-
 											</div>
-
-
 										</div>
-
-
-
-
-
+										
 										<div>
 											<p th:text="${paramUser.shortDiscription}">Short
 												Discription</p>
-
-
 											<hr class="style18" />
-
-
 										</div>
-
-
-
 										<div class="row">
-
 											<input type="text" id="param_user_id" class="hidden"
 												th:value="${paramUser.ednetUserId}" />
-
 											<button onclick="cancel_friend_request()" type="button"
 												id="friend_button" name="friend_button"
 												class="col-lg-3 col-md-3 col-sm-3 ">Unfriend</button>
-
-
 											<div class="col-lg-1 col-md-1 col-sm-1"></div>
 
 											<a href="">
@@ -175,143 +115,33 @@
 													class="col-lg-4 col-md-4 col-sm-4 ">Block this
 													User</button>
 											</a>
-
-
-
-
-
 											<div class="col-lg-1 col-md-1 col-sm-1"></div>
 
 											<a href="">
 												<div class="col-lg-3 col-md-3 col-sm-3 menu30">
 													Message</div>
 											</a>
-
-
-
 										</div>
-
-
 									</div>
 									<div id="tabs-2">
-										<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio
-											metus gravida ante, ut pharetra massa metus id nunc. Duis
-											scelerisque molestie turpis. Sed fringilla, massa eget luctus
-											malesuada, metus eros molestie lectus, ut tempus eros massa
-											ut dolor. Aenean aliquet fringilla sem. Suspendisse sed
-											ligula in ligula suscipit aliquam. Praesent in eros
-											vestibulum mi adipiscing adipiscing. Morbi facilisis.
-											Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere
-											viverra nulla. Aliquam erat volutpat. Pellentesque convallis.
-											Maecenas feugiat, tellus pellentesque pretium posuere, felis
-											lorem euismod felis, eu ornare leo nisi vel felis. Mauris
-											consectetur tortor et purus.</p>
+										Skill Test Options Will be here
 									</div>
-									<div id="tabs-3">
-										<p>Mauris eleifend est et turpis. Duis id erat.
-											Suspendisse potenti. Aliquam vulputate, pede vel vehicula
-											accumsan, mi neque rutrum erat, eu congue orci lorem eget
-											lorem. Vestibulum non ante. Class aptent taciti sociosqu ad
-											litora torquent per conubia nostra, per inceptos himenaeos.
-											Fusce sodales. Quisque eu urna vel enim commodo pellentesque.
-											Praesent eu risus hendrerit ligula tempus pretium. Curabitur
-											lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-										<p>Duis cursus. Maecenas ligula eros, blandit nec,
-											pharetra at, semper at, magna. Nullam ac lacus. Nulla
-											facilisi. Praesent viverra justo vitae neque. Praesent
-											blandit adipiscing velit. Suspendisse potenti. Donec mattis,
-											pede vel pharetra blandit, magna ligula faucibus eros, id
-											euismod lacus dolor eget odio. Nam scelerisque. Donec non
-											libero sed nulla mattis commodo. Ut sagittis. Donec nisi
-											lectus, feugiat porttitor, tempor ac, tempor vitae, pede.
-											Aenean vehicula velit eu tellus interdum rutrum. Maecenas
-											commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a
-											libero vitae lectus hendrerit hendrerit.</p>
-										<p>Mauris eleifend est et turpis. Duis id erat.
-											Suspendisse potenti. Aliquam vulputate, pede vel vehicula
-											accumsan, mi neque rutrum erat, eu congue orci lorem eget
-											lorem. Vestibulum non ante. Class aptent taciti sociosqu ad
-											litora torquent per conubia nostra, per inceptos himenaeos.
-											Fusce sodales. Quisque eu urna vel enim commodo pellentesque.
-											Praesent eu risus hendrerit ligula tempus pretium. Curabitur
-											lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-										<p>Duis cursus. Maecenas ligula eros, blandit nec,
-											pharetra at, semper at, magna. Nullam ac lacus. Nulla
-											facilisi. Praesent viverra justo vitae neque. Praesent
-											blandit adipiscing velit. Suspendisse potenti. Donec mattis,
-											pede vel pharetra blandit, magna ligula faucibus eros, id
-											euismod lacus dolor eget odio. Nam scelerisque. Donec non
-											libero sed nulla mattis commodo. Ut sagittis. Donec nisi
-											lectus, feugiat porttitor, tempor ac, tempor vitae, pede.
-											Aenean vehicula velit eu tellus interdum rutrum. Maecenas
-											commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a
-											libero vitae lectus hendrerit hendrerit.</p>
-										<p>Mauris eleifend est et turpis. Duis id erat.
-											Suspendisse potenti. Aliquam vulputate, pede vel vehicula
-											accumsan, mi neque rutrum erat, eu congue orci lorem eget
-											lorem. Vestibulum non ante. Class aptent taciti sociosqu ad
-											litora torquent per conubia nostra, per inceptos himenaeos.
-											Fusce sodales. Quisque eu urna vel enim commodo pellentesque.
-											Praesent eu risus hendrerit ligula tempus pretium. Curabitur
-											lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-										<p>Duis cursus. Maecenas ligula eros, blandit nec,
-											pharetra at, semper at, magna. Nullam ac lacus. Nulla
-											facilisi. Praesent viverra justo vitae neque. Praesent
-											blandit adipiscing velit. Suspendisse potenti. Donec mattis,
-											pede vel pharetra blandit, magna ligula faucibus eros, id
-											euismod lacus dolor eget odio. Nam scelerisque. Donec non
-											libero sed nulla mattis commodo. Ut sagittis. Donec nisi
-											lectus, feugiat porttitor, tempor ac, tempor vitae, pede.
-											Aenean vehicula velit eu tellus interdum rutrum. Maecenas
-											commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a
-											libero vitae lectus hendrerit hendrerit.</p>
-
-									</div>
+									<div id="tabs-3"> University Section Will be here</div>
 									<div id="tabs-4">
-										<p>Proin elit arcu, rutrum commodo, vehicula tempus,
-											commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi
-											sit amet mauris. Nam elementum quam ullamcorper ante. Etiam
-											aliquet massa et lorem. Mauris dapibus lacus auctor risus.
-											Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula
-											eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae
-											ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et
-											mauris vel pede varius sollicitudin. Sed ut dolor nec orci
-											tincidunt interdum. Phasellus ipsum. Nunc tristique tempus
-											lectus.</p>
+										 Ranking Will be here
 									</div>
 									<div id="tabs-5">
-										<p>Proin elit arcu, rutrum commodo, vehicula tempus,
-											commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi
-											sit amet mauris. Nam elementum quam ullamcorper ante. Etiam
-											aliquet massa et lorem. Mauris dapibus lacus auctor risus.
-											Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula
-											eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae
-											ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et
-											mauris vel pede varius sollicitudin. Sed ut dolor nec orci
-											tincidunt interdum. Phasellus ipsum. Nunc tristique tempus
-											lectus.</p>
+										Pages information
 									</div>
 									<div id="tabs-6">
-										<p>Proin elit arcu, rutrum commodo, vehicula tempus,
-											commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi
-											sit amet mauris. Nam elementum quam ullamcorper ante. Etiam
-											aliquet massa et lorem. Mauris dapibus lacus auctor risus.
-											Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula
-											eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae
-											ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et
-											mauris vel pede varius sollicitudin. Sed ut dolor nec orci
-											tincidunt interdum. Phasellus ipsum. Nunc tristique tempus
-											lectus.</p>
+											Groups information
 									</div>
 								</div>
 							</div>
-
 						</div>
-
 					</div>
 				</div>
 			</div>
-
 
 			<div class="col-lg-5 col-md-5 right_sider">
 				<div class="row cover_area">
@@ -319,139 +149,23 @@
 						class="img-responsive img-rounded"
 						th:src="@{/images/bangladesh2.jpg}" />
 				</div>
-
-
-
-
 				<div class="row">
-					<div class="news_gap"></div>
-
-					<div th:if="${not #lists.isEmpty(userPost)}">
-
-						<div class="post_section" th:each="post : ${userPost}">
-
-							<div class="naz_news_panel">
-								<div class="panel-heading">
-									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-left"
-										th:each="user: ${post.user}">
-										<a th:href="@{/users/{username}(username=${user.userName})}">
-
-											<span th:text="${user.firstName}">First Name</span> <span
-											th:text="${user.lastName}">Last Name</span>
-										</a>
-									</div>
-
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-left">
-										<span th:text="${post.timeAgo}"></span>
-									</div>
-
-									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right">
-										<a>Options</a>
-									</div>
-
-								</div>
-								<div class="panel-body">
-									<div th:each="user: ${post.user}"
-										class="col-lg-2 col-md-2 col-sm-3 col-xs-2 post_image_box">
-
-
-										<div th:if="${user.profilePicId != 0}">
-											<div class="post_image">
-												<img src="../static/images/sylhet.jpg"
-													class="img-responsive img-rounded"
-													th:src="@{/images/sylhet.jpg}" />
-											</div>
-										</div>
-
-										<div th:unless="${user.profilePicId != 0}">
-											<div th:if="${user.gender == 'Male'}">
-												<div class="post_image">
-													<img src="../static/images/profile_male.jpg"
-														class="img-responsive img-rounded"
-														th:src="@{/images/profile_male.jpg}" />
-												</div>
-
-											</div>
-
-											<div th:unless="${user.gender == 'Male'}">
-												<div class="post_image">
-													<img src="../static/images/profile_female.jpg"
-														class="img-responsive img-rounded"
-														th:src="@{/images/profile_female.jpg}" />
-												</div>
-
-											</div>
-										</div>
-
-									</div>
-
-									<div class="col-lg-10 col-md-10 col-sm-9 col-xs-10">
-										<div th:text="${post.userPostDiscription}">Post
-											Discription</div>
-									</div>
-
-
-								</div>
-
-								<div class="panel-footer">
-									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-										<div th:if="${post.loginUserLikeOrNot == true}">
-
-											<a class="dislike_button" th:id="${post.userPostId}">
-
-												Dislike </a>
-
-										</div>
-
-										<div th:if="${post.loginUserLikeOrNot == false}">
-
-											<a class="like_button" th:id="${post.userPostId}"> Like </a>
-
-										</div>
-									</div>
-
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-										<a href="" class="likecount"
-											th:id="live_count+${post.userPostId}"
-											th:text="${post.likeCount}"> LikeCount </a>
-									</div>
-
-									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-										Comments</div>
-
-									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
-										th:text="${post.privacy}">Public</div>
-
-								</div>
-
-							</div>
-							<div class="news_gap"></div>
-
-						</div>
-
-
-					</div>
+					<!-- Post Start -->
+					<div th:replace="layouts/post_feed :: all-post"></div>
+					<!-- Post End -->
 					<div th:unless="${not #lists.isEmpty(userPost)}">
 						<div class="empty_user_post">
 							<div class="col-lg-12 col-md-12 col-sm-12 ">
 								<span th:text="${#strings.capitalize(paramUser.firstName)}">First
 									Name</span> <span th:text="${#strings.capitalize(paramUser.lastName)}">Last
 									Name</span> do not have any post to show.
-
-
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
-
-
-
-
-
 
 	<div th:replace="layout :: javascript-load"></div>
 	<script src="../static/js/cancel_friend_request.js"

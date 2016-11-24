@@ -1,38 +1,23 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: site-head"></head>
-
 <body>
-
-
 	<div th:replace="layout :: menubar"></div>
-
-
 	<div class="full_page">
-
 		<div class="panel naz_panel">
-
 			<div class=" panel-heading ">
-				<h3 class="panel-title" th:text="${paramUser.firstName +' ' +paramUser.lastName + ' picture gallery'}"></h3>
+				<h3 class="panel-title"
+					th:text="${paramUser.firstName +' ' +paramUser.lastName + ' picture gallery'}"></h3>
 			</div>
-
-
-
 			<div class="panel-body pic_upload_area">
-
 				<div id="tabs">
 					<ul>
-
 						<li><a href="#tabs-1">Recent Picture</a></li>
 						<li><a href="#tabs-2">Picture Upload</a></li>
 						<li><a href="#tabs-3">My Pictures</a></li>
-						
-						
 					</ul>
 					<div id="tabs-1">
-
 						<div th:if="${not #lists.isEmpty(files)}">
-
 							<div>
 								<ul>
 									<li th:each="file : ${files}"><a th:href="${file}"
@@ -49,66 +34,39 @@
 													<h3 class="panel-title" th:text="${file}">Picture Name</h3>
 												</div>
 												<div class="panel-body">
-
 													<img th:src="${file}" class="img-responsive img-rounded" />
-
 												</div>
 											</div>
-
 										</div>
-
 									</div>
-
 								</div>
-
-
 							</div>
-
 						</div>
 
 						<div th:unless="${not #lists.isEmpty(files)}">
-
 							<h4>
 								<span th:text="${paramUser.firstName+ ' ' +paramUser.lastName }"></span><span>
 									don't have any Picture</span>
 							</h4>
-
 						</div>
-
-
 					</div>
-					
-				
+
 					<div id="tabs-2">
 						<div class="panel panel-primary">
-
-							
-
 							<form method="POST" enctype="multipart/form-data"
 								th:action="@{/users/{username}/picture_gallery(username=${loginUser.userName})}">
-
 								<div class="panel-body pic_upload_area">
-
 									<div th:if="${message}">
 										<h2 class="text-center" th:text="${message}" />
 									</div>
-
-
 									<div>
-
 										<table>
 											<tr>
 												<td>Picture upload:(Max 1MB)</td>
 												<td><input type="file" name="file" required="required" /></td>
-
-
 											</tr>
-
 										</table>
-
 									</div>
-
-
 								</div>
 
 								<div class="panel-footer pic_upload_panel_footer">
@@ -119,34 +77,12 @@
 							</form>
 						</div>
 					</div>
-					
-					<div id="tabs-3">
-						User's All Picture will be here
-					</div>
-					
-					
+					<div id="tabs-3">User's All Picture will be here</div>
 				</div>
-
-
 			</div>
-
 			<div class="panel-footer ">All Picture</div>
-
 		</div>
-
-
-
-
-
-
-
-
-
 	</div>
-
-
-
-
 
 
 	<div th:replace="layout :: javascript-load"></div>
