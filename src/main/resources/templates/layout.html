@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="site-head">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Morning Star</title>
+	<link rel="icon" href="../static/images/favicon.ico"
+		th:href="@{/images/favicon.ico}" />
+	
+	<link
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+		rel="stylesheet" media="screen" />
+	<link href="../static/css/jquery-ui.min.css" th:href="@{/css/jquery-ui.min.css}" 
+		rel="stylesheet" media="screen" />
+
+	 <link href="../static/css/newsfeed1.css"
+		th:href="@{/css/newsfeed1.css}" rel="stylesheet" media="screen" />
+
+	<!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+	rel="stylesheet" type="text/css" /> -->
+	 
+</head>
+
+<body>
+	<div th:fragment="menubar">
+	<div class="navbar navbar-inverse navbar-fixed-top header_menu text-center " role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="glyphicon glyphicon-arrow-down"></span>
+						Menu
+					</button>
+
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+
+						<li><a th:href="@{/}" th:text="#{company.name}">Ednet</a></li>
+
+						<li>
+							<form action="" method="post">
+							
+								<input onkeyup="navbar_search_function()" id="search_bar" type="search" name="userName" class="search_bar" placeholder="Search here" />
+								<div id="search_result" class="search_result">
+
+								</div>
+								
+							</form>
+						</li>
+						
+
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+		        		<li><a th:href="@{/users/{username}(username=${loginUser.userName})}" th:text="${loginUser.firstName} + ' Profile'">
+							My Profile</a></li>
+						
+						<li th:if="${friendRequestCount > 0}"><a  th:href="@{/user-friend-requests}" class="glyphicon glyphicon-user" ><span class="badge notification_badge" th:text="${friendRequestCount}"> 0</span></a></li>
+						<li th:unless="${friendRequestCount > 0}"><a  th:href="@{/user-friend-requests}" class="glyphicon glyphicon-user" ></a></li>
+					
+						<!-- <li><a  href="" class="glyphicon glyphicon-comment" ><span class="badge">0</span></a></li> -->
+						<li><a   class="glyphicon glyphicon-comment" ></a></li>
+						<li><a  class="glyphicon glyphicon-tree-conifer"></a></li>
+						<li><a th:href="@{/}">Home</a></li>
+
+		        <li class="dropdown">
+		          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+								<li><a th:href="@{/user-registration}">Try Registration</a></li>
+								<li><a th:href="@{/login}">Try Login</a></li>
+								<li class="divider"></li>
+								<li><a th:href="@{/logout}">Logout</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div th:fragment="javascript-load">
+	 	<script src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+	 	<script src="../static/js/jquery-ui.min.js" th:src="@{/js/jquery-ui.min.js}"></script>
+		 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
+		 <script src="../static/js/status_submit.js" th:src="@{/js/status_submit.js}"></script> 
+		 <script src="../static/js/navbar_search_function.js" th:src="@{/js/navbar_search_function.js}"></script> 
+
+		
+		  <script>
+			  $( function() {
+			    $( "#tabs" ).tabs();
+			  } );
+  		</script>
+  		
+  		
+		
+		
+	</div>
+
+
+</body>
+</html>

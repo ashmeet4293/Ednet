@@ -1,0 +1,63 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head"></head>
+
+<body>
+
+	<div th:replace="layout :: menubar"></div>
+
+	<div class="full_page">
+		<div class="row ">
+			<div 
+				th:if="${not #lists.isEmpty(requestSender)}">
+				<table class="table table-stripped ">
+					<tr>
+						<th class="col-lg-6 col-md-6 col-sm-6 text-center">Request From</th>
+						<th class="col-lg-3 col-md-3 col-sm-3 text-center">Accept Request</th>
+						<th class="col-lg-3 col-md-3 col-sm-3 text-center">Reject Request</th>
+					</tr>
+					<tr th:each="request : ${requestSender}" >
+
+
+						<td class="col-lg-6 col-md-6 col-sm-6"><a 
+							th:href="@{/users/{username}(username=${request.userName})}"> <div class="friend_request_user">
+								
+									<span th:text="${request.firstName}"></span> <span
+										th:text="${request.LastName}"></span>
+								
+						</div></a></td>
+
+						<td class="col-lg-3 col-md-3 col-sm-3"><div>
+						
+						
+								<button onclick="accept_friend_request()" type="button"
+									id="accept_button" name="friend_button"
+									class="col-lg-12 col-md-12 col-sm-12 ">Accept Request</button>
+							</div></td>
+						<td class="col-lg-3 col-md-3 col-sm-3"><div>
+								<button onclick="reject_friend_request()" type="button"
+									id="reject_button" name="reject_button"
+									class="col-lg-12 col-md-12 col-sm-12 ">Reject Request</button>
+							</div></td>
+
+						<!-- <td  th:text="${request.userIdOne}">Nazmul Islam</td> 
+						<td>Accept Button</td>
+						<td>Reject Button</td> -->
+					</tr>
+
+				</table>
+			</div>
+			<div th:else="${not #lists.isEmpty(requestSender)}">
+				<h1 class="text-center">There are no Friend Request at this moment</h1>
+			</div>
+		</div>
+	</div>
+
+
+	<div th:replace="layout :: javascript-load"></div>
+		<script src="../static/js/accept_friend_request.js"
+		th:src="@{/js/accept_friend_request.js}"></script>
+		<script src="../static/js/reject_friend_request.js"
+		th:src="@{/js/reject_friend_request.js}"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head"></head>
+
+<body>
+
+	<div>
+		<div th:replace="layout :: menubar"></div>
+	</div>
+
+
+
+	<div class="full_page">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+
+				<div class="edit_profile_mainbody">
+					<div class="row profile_heading5">
+
+						<div>
+							<a th:href="@{/users/{username}(username=${loginUser.userName})}">
+								<div class="col-lg-12 col-md-12 col-sm-12 edit_profile_title">
+
+									<span th:text="${loginUser.firstName}">First Name</span> <span
+										th:text="${loginUser.lastName}">Last Name</span>
+
+								</div>
+							</a>
+
+						</div>
+<!-- 						<div>
+							File Upload
+							<form
+								th:action="@{/users/{username}/edit-user-profile/change-profile-picture(username=${loginUser.userName})}"
+								method="post" enctype="multipart/form-data">
+								<div class="profile_pic_upload_form" id="upload_image_form"
+									th:style="${#fields.hasGlobalErrors() ? 'display:inline;' : 'display:none'}">
+
+									<div th:if="${#fields.hasGlobalErrors()}" class="has-error alert alert-dismissble alert-danger">
+										<button type="button" class="close" data-dismiss="alert">X</button>
+										<label class="control-label" th:each="err: ${#fields.hasGlobalErrors()}" th:text="${err}"></label>
+									</div>
+									
+									<h3 th:text="#{user.new.image}">[New Image]</h3>
+									<div><input type="file" name="file" size="60"/></div>
+
+
+
+								</div>
+
+								<div class="profile_pic_upload_form" id="upload_image_form">
+
+									<div>
+										<button type="button" class="close" data-dismiss="alert">X</button>
+										<label class="control-label"></label>
+									</div>
+
+									<h3>[New Image]</h3>
+									<div>
+										<input type="file" name="file" size="60" />
+									</div>
+
+
+
+								</div>
+
+
+
+							</form>
+
+						</div> -->
+						<div>
+							<div th:if="${message}">
+								<h2 th:text="${message}" />
+							</div>
+
+							<div>
+								<form method="POST" enctype="multipart/form-data" action="/">
+									<table>
+										<tr>
+											<td>File to upload:</td>
+											<td><input type="file" name="file" /></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td><input type="submit" value="Upload" /></td>
+										</tr>
+									</table>
+								</form>
+							</div>
+
+<!-- 							<div>
+								<ul>
+									<li th:each="file : ${files}"><a th:href="${file}"
+										th:text="${file}" /></li>
+								</ul>
+							</div> -->
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div th:replace="layout :: javascript-load"></div>
+
+</body>
+</html>

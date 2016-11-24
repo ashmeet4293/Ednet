@@ -1,0 +1,13 @@
+{
+  "groups": [{
+    "name": "storage",
+    "type": "com.simplenazmul.storage.StorageProperties",
+    "sourceType": "com.simplenazmul.storage.StorageProperties"
+  }],
+  "properties": [{
+    "name": "storage.location",
+    "type": "java.lang.String",
+    "sourceType": "com.simplenazmul.storage.StorageProperties"
+  }],
+  "hints": []
+}

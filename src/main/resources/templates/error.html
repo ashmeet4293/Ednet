@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="login :: outsite-head">
+<title>ERROR PAGE</title>
+</head>
+<body>
+
+
+	<div class="container header_section">
+
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+			<a th:href="@{/}">
+				<h1 th:text="#{company.name}">Ednet</h1>
+			</a>
+			<p>An Education Network</p>
+
+		</div>
+
+	</div>
+	<div class="container">
+		<nav class="row menu1 login_logo">
+			<div class="col-lg-3 col-md-3 col-sm-2"></div>
+
+			<div class="col-lg-6 col-md-7 col-sm-9">
+				<ul class="nav nav-tabs nav-tabs-justified login_menu">
+					<li><a th:href="@{/}">Home</a></li>
+					<li><a th:href="@{about}">About us</a></li>
+					<li><a th:href="@{contact}">Contact us</a></li>
+					<li><a th:href="@{/help}">Help</a></li>
+					<li><a th:href="@{job}">Job</a></li>
+				</ul>
+			</div>
+
+			<div class="col-lg-3 col-md-2 col-sm-1"></div>
+		</nav>
+	</div>
+
+
+	<div th:if="${message}">
+		<h2 th:text="${message}" />
+	</div>
+
+
+
+
+
+	<div th:replace="layout :: javascript-load"></div>
+
+</body>
+</html>

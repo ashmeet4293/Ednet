@@ -1,0 +1,24 @@
+
+<div th:if="${not #lists.isEmpty(searchUserList)}">
+
+	<div class="search_output_class"
+		th:each="searchUser : ${searchUserList}">
+
+		<a th:href="@{/users/{username}(username=${searchUser.userName})}">
+			<div>
+				<span th:text="${#strings.capitalize(searchUser.firstName)}">First
+											Name</span> <span
+											th:text="${#strings.capitalize(searchUser.lastName)}">Last
+											Name</span>
+			</div>
+		</a>
+
+	</div>
+</div>
+
+
+
+
+
+
+

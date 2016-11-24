@@ -1,0 +1,275 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head"></head>
+
+<body>
+
+	<div th:replace="layout :: menubar"></div>
+
+	<div class="full_page">
+		<div class="row">
+			<div class="col-lg-7 col-md-7">
+
+				<div class="friend_leftsider1">
+
+
+					<div class="row profile_heading5">
+
+						<div class="user_profile_menubar_full">
+
+							<div th:if="${loginUser.profilePicId != 0}">
+								<div class="user_profile_menubar_left">
+									<img src="../static/images/sylhet.jpg"
+										class="img-responsive img-rounded"
+										th:src="@{/images/sylhet.jpg}" />
+								</div>
+							</div>
+
+							<div th:unless="${loginUser.profilePicId != 0}">
+								<div th:if="${loginUser.gender == 'Male'}">
+									<div class="user_profile_menubar_left">
+										<img src="../static/images/profile_male.jpg"
+											class="img-responsive img-rounded"
+											th:src="@{/images/profile_male.jpg}" />
+									</div>
+
+								</div>
+
+								<div th:unless="${loginUser.gender == 'Male'}">
+									<div class="user_profile_menubar_left">
+										<img src="../static/images/profile_female.jpg"
+											class="img-responsive img-rounded"
+											th:src="@{/images/profile_female.jpg}" />
+									</div>
+
+								</div>
+
+							</div>
+
+
+
+
+							<div class="row user_profile_menubar_right">
+								<a
+									th:href="@{/users/{username}(username=${loginUser.userName})}">
+									<div class="menu201">
+										<span th:text="${#strings.capitalize(loginUser.firstName)}">First
+											Name</span> <span
+											th:text="${#strings.capitalize(loginUser.lastName)}">Last
+											Name</span>
+									</div>
+								</a>
+
+								<div class="col-lg-12-col-md-12 col-sm-12 ">
+									<a
+										th:href="@{/users/{username}(username=${loginUser.userName})}"><div
+											class="col-lg-3 col-md-3 col-sm-3 menu200">Profile</div></a> <a
+										th:href="@{/users/{username}/picture_gallery(username=${loginUser.userName})}"><div
+											class="col-lg-3 col-md-3 col-sm-3 menu200">Pictures</div></a> <a><div
+											class="col-lg-3 col-md-3 col-sm-3 menu200">Friends</div></a> <a><div
+											class="col-lg-3 col-md-3 col-sm-3 menu200">Message</div></a> <a><div
+											class="col-lg-3 col-md-3 col-sm-3 menu200">Account</div></a>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+
+
+							<div class="col-lg-12 col-md-12  col-sm-12 ">
+								<!-- NewsFeed Tab -->
+								<div th:replace="layouts/layout_newsfeed_tab :: newsfeed-tab"></div>
+							</div>
+
+
+
+						</div>
+
+
+						<div class="row line_gap"></div>
+
+
+
+
+
+
+						<div class="row suggestion_box">This will be Suggestion box</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<div class="col-lg-5 col-md-5 right_sider">
+
+
+
+				<div class="row">
+					<div class="each_section">
+
+						<div>
+							<textarea id="statusbox1" th:maxlength="${300}"
+								class="status_box_class" name="discription"
+								placeholder="Whats on your mind?"> </textarea>
+						</div>
+
+						<div class="row text-center text_area_bottom_box">
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+								<button onclick="abc()" type="button" id="post_button"
+									name="post_button" class="mmm">Post button</button>
+							</div>
+
+							<div
+								class="col-lg-4 col-md-4 col-sm-4 col-xs-4 character_counter">300
+								character</div>
+
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+								<select id="type" name="type" class="mmm text-center">
+									<option value="Public">PUBLIC</option>
+									<option value="Friends">FRIENDS</option>
+									<option value="Private">PRIVATE</option>
+
+								</select>
+							</div>
+
+
+						</div>
+
+
+					</div>
+
+
+					<div id="new_post_status"></div>
+
+
+					<div th:if="${not #lists.isEmpty(userPost)}">
+						<div class="post_section" th:each="post : ${userPost}">
+							<div class="news_gap"></div>
+							<div class="naz_news_panel">
+								<div class="panel-heading">
+									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-left"
+										th:each="user: ${post.user}">
+										<a th:href="@{/users/{username}(username=${user.userName})}">
+
+											<span th:text="${user.firstName}">First Name</span> <span
+											th:text="${user.lastName}">Last Name</span>
+										</a>
+									</div>
+
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-left">
+										<span th:text="${post.timeAgo}"></span>
+									</div>
+
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right">
+										<a>Options</a>
+									</div>
+
+								</div>
+								<div class="panel-body">
+									<div th:each="user: ${post.user}" class="col-lg-2 col-md-2 col-sm-3 col-xs-2 post_image_box"
+										>
+
+
+										<div th:if="${user.profilePicId != 0}">
+											<div class="post_image">
+												<img src="../static/images/sylhet.jpg"
+													class="img-responsive img-rounded"
+													th:src="@{/images/sylhet.jpg}" />
+											</div>
+										</div>
+
+										<div th:unless="${user.profilePicId != 0}">
+											<div th:if="${user.gender == 'Male'}">
+												<div class="post_image">
+													<img src="../static/images/profile_male.jpg"
+														class="img-responsive img-rounded"  th:src="@{/images/profile_male.jpg}" />
+												</div>
+
+											</div>
+
+											<div th:unless="${user.gender == 'Male'}">
+												<div class="post_image">
+													<img src="../static/images/profile_female.jpg"
+														class="img-responsive img-rounded"  th:src="@{/images/profile_female.jpg}" />
+												</div>
+
+											</div>
+
+										</div>
+
+
+
+
+
+
+
+
+									</div>
+
+									<div class="col-lg-10 col-md-10 col-sm-9 col-xs-10">
+										<div th:text="${post.userPostDiscription}">Post
+											Discription</div>
+									</div>
+
+
+								</div>
+
+								<div class="panel-footer">
+									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+										<div th:if="${post.loginUserLikeOrNot == true}">
+
+											<a class="dislike_button" th:id="${post.userPostId}">
+
+												Dislike </a>
+
+										</div>
+
+										<div th:if="${post.loginUserLikeOrNot == false}">
+
+											<a class="like_button" th:id="${post.userPostId}"> Like </a>
+
+										</div>
+									</div>
+
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+										<a href="" class="likecount"
+											th:id="live_count+${post.userPostId}"
+											th:text="${post.likeCount}"> LikeCount </a>
+									</div>
+
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+										Comments</div>
+
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"
+										th:text="${post.privacy}">Public</div>
+
+								</div>
+							</div>
+
+						</div>
+
+
+					</div>
+
+
+
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div th:replace="layout :: javascript-load"></div>
+	<script src="../static/js/like_system.js"
+		th:src="@{/js/like_system.js}"></script>
+	<script src="../static/js/dislike_system.js"
+		th:src="@{/js/dislike_system.js}"></script>
+</body>
+</html>
