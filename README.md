@@ -7,10 +7,12 @@ It is my portfolio site. I am working on this. If anyone find any error then fee
   - MYSQL
   - Hibernate 5
   - Spring Security
+  - Spring Boot devtools
   - Thymeleaf
   - HTML
   - CSS
   - JavaScript
+  - JQuery
   - Etc.
 
 ### Some Picture of this site :
