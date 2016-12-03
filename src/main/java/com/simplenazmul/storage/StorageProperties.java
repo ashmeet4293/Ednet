@@ -6,14 +6,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class StorageProperties {
 
 
-    private String location = "upload-dir/image-dir";
+	// Folder Location For Picture Upload
+	private String location = "f:/ednet_folder/ednet_images/";
 
-    public String getLocation() {
-        return location;
-    }
+	public String getLocation() {
+		return location;
+	}
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+
 
 }

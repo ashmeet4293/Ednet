@@ -6,12 +6,14 @@
 	<div class="full_page">
 		<div class="row">
 			<div class="col-lg-7 col-md-7">
-				<div class="friend_leftsider1">
-					<div class="row profile_heading5">
-						<div class="user_profile_menubar_full">							
+				<div class="naz_left_side_panel">
+				
+					<div class="top_padding">
+						<div class="user_profile_menubar_full">
 							<!-- TOP LEFT Login User Picture -->
-							<div th:replace="layouts/loginuser_top_left_pic :: loginuser-top-left-picture"></div>	
-							<div class="row user_profile_menubar_right">
+							<div
+								th:replace="layouts/loginuser_top_left_pic :: loginuser-top-left-picture"></div>
+							<div class="row user_profile_menubar_right text-center">
 								<a
 									th:href="@{/users/{username}(username=${loginUser.userName})}">
 									<div class="menu201">
@@ -32,21 +34,32 @@
 											class="col-lg-3 col-md-3 col-sm-3 menu200">Account</div></a>
 								</div>
 							</div>
-						</div>
+						
 						<div class="row">
 							<div class="col-lg-12 col-md-12  col-sm-12 ">
+								
 								<!-- NewsFeed Tab -->
-								<div th:replace="layouts/layout_newsfeed_tab :: newsfeed-tab"></div>
+									<div th:replace="layouts/layout_newsfeed_tab :: newsfeed-tab"></div>
+								
 							</div>
 						</div>
-						<div class="row line_gap"></div>
-						<div class="row suggestion_box">This will be Suggestion box</div>
+						
 					</div>
 				</div>
+				</div>
+		
+				
+				<div class="naz_left_side_panel">
+					Suggetion Box
+				</div>
+				
 			</div>
-			<div class="col-lg-5 col-md-5 right_sider">
+			<div class="col-lg-5 col-md-5 ">
 				<div class="row">
-					<div class="each_section">
+
+					<div class="naz_news_panel background_100">
+				
+
 						<div>
 							<textarea id="statusbox1" th:maxlength="${300}"
 								class="status_box_class" name="discription"
@@ -70,21 +83,28 @@
 								</select>
 							</div>
 						</div>
+
 					</div>
+
 					<div id="new_post_status"></div>
 					<!-- Post Start -->
 					<div th:replace="layouts/post_feed :: all-post"></div>
 					<!-- Post End -->
 				</div>
 
+
 			</div>
 		</div>
 	</div>
 
 	<div th:replace="layout :: javascript-load"></div>
+	<script src="../static/js/status_submit.js"
+		th:src="@{/js/status_submit.js}"></script>
 	<script src="../static/js/like_system.js"
 		th:src="@{/js/like_system.js}"></script>
 	<script src="../static/js/dislike_system.js"
 		th:src="@{/js/dislike_system.js}"></script>
+
+
 </body>
 </html>

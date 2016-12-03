@@ -139,35 +139,32 @@ public class UserPostServiceImpl implements UserPostService {
 	@Override
 	public List<UserPost> findNewsFeedPostByUserId(int loginUserId) {
 
-		List<User> friendList = friendSystemService.findAllFriendListById(loginUserId);
 		User loginUser = userService.findByEdnetId(loginUserId);
+		List<User> friendList = friendSystemService.findAllFriendListById(loginUserId);
 
-		List<UserPost> userPostList1 = new ArrayList<UserPost>();
-		userPostList1.addAll(findPostByUserId(loginUser));
-
-		for (User user : friendList) {
-			userPostList1.addAll(friendPost(user));
-		}
+		List<UserPost> userPostList1 = this.findPostByUserId(loginUser);
+		
+		friendList.forEach(friend->{
+			userPostList1.addAll(friendPost(friend));
+		});
+		
 
 		List<UserPost> uPosts = new ArrayList<UserPost>();
 
-		Collections.sort(userPostList1, (o1, o2) -> o2.getUserPostCreatedTime().compareTo(o1.getUserPostCreatedTime()));
+		Collections.sort(userPostList1,
+				(o1, o2) -> o2.getUserPostCreatedTime().compareTo(o1.getUserPostCreatedTime()));
 		userPostList1.stream().limit(30).forEach(s -> uPosts.add(s));
 
-		List<LikeUserPost> ab = new ArrayList<LikeUserPost>();
+	//	List<LikeUserPost> ab = new ArrayList<LikeUserPost>();
 
 		try {
 			for (UserPost up : uPosts) {
-
-				ab = likeUserPostService.listLikeCountByPostId(up.getUserPostId());
-
-				up.setLikeUserPosts(ab);
+				likeUserPostService.listLikeCountByPostId(up.getUserPostId());
 				String time = timeAgoFunction(up.getUserPostCreatedTime());
 				up.setTimeAgo(time);
 
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

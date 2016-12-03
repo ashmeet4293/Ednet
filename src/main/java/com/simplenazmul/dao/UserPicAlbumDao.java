@@ -18,4 +18,6 @@ public interface UserPicAlbumDao {
 	void deleteAlbumById(UserPicAlbum albumId);
 
 	int findUserPicAlbumByAlbumCaptionAndUser(String albumCaption, User user);
+	
+	UserPicAlbum findUserPicAlbumClassByAlbumCaptionAndUser(String albumCaption, User user);
 }

@@ -20,4 +20,6 @@ public interface UserPicAlbumService {
 	boolean albumHaveOrNot(User user);
 
 	int findUserPicAlbumByAlbumCaptionAndUser(String albumCaption, User user);
+	
+	UserPicAlbum findUserPicAlbumClassByAlbumCaptionAndUser(String albumCaption, User user);
 }

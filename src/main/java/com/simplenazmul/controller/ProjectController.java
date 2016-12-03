@@ -45,6 +45,8 @@ import com.simplenazmul.service.UserProfileService;
 import com.simplenazmul.service.UserService;
 import com.simplenazmul.storage.StorageFileNotFoundException;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 @Controller
 public class ProjectController {
 
@@ -83,6 +85,18 @@ public class ProjectController {
 	// return "friend_test";
 	// }
 
+	@GetMapping("/testing")
+	public String testing(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			String currentUserName = authentication.getName();
+			model.addAttribute("username", currentUserName);
+			return "test";
+		}
+
+		return "redirect:/error";
+	}
+
 	@GetMapping("/login")
 	public String loginPage(ModelMap model) {
 		if (loginOrNot() == true) {
@@ -93,17 +107,18 @@ public class ProjectController {
 
 	@GetMapping("/error")
 	public String errorPage(ModelMap model) {
-		if (loginOrNot() == true) {
-			logger.info("INTO /ERROR : Login USER");
-			User loginUser = getLoginUser();
-
-			model.addAttribute("users", userService.findAllUser());
-			model.addAttribute("loginUser", getLoginUser());
-			logger.info("Login user is : " + loginUser);
-
-			return "error_login_user";
-		}
-		logger.info("INTO /ERROR : anonyomous User");
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		if (!(auth instanceof AnonymousAuthenticationToken)) {
+//			logger.info("INTO /ERROR : Login USER");
+//
+//			User loginUser = getLoginUser();
+//
+//			logger.info("Login user is : " + loginUser);
+//
+//			model.addAttribute("loginUser", loginUser);
+//			return "error_login_user";
+//		}
+//		logger.info("INTO /ERROR : anonyomous User");
 		return "error";
 
 	}
@@ -161,45 +176,7 @@ public class ProjectController {
 			int friendCount = friendSystemService.friendCount(loginUserId);
 
 			List<User> friendList = friendSystemService.findAllFriendListById(loginUserId);
-
-			List<UserPost> userPostList1 = new ArrayList<UserPost>();
-			userPostList1.addAll(userPostService.findPostByUserId(loginUser));
-
-			for (User user : friendList) {
-				userPostList1.addAll(userPostService.friendPost(user));
-
-			}
-
-			List<UserPost> uPosts = new ArrayList<UserPost>();
-
-			Collections.sort(userPostList1,
-					(o1, o2) -> o2.getUserPostCreatedTime().compareTo(o1.getUserPostCreatedTime()));
-			userPostList1.stream().limit(30).forEach(s -> uPosts.add(s));
-
-			List<LikeUserPost> ab = new ArrayList<LikeUserPost>();
-
-			try {
-				for (UserPost up : uPosts) {
-
-					ab = likeUserPostService.listLikeCountByPostId(up.getUserPostId());
-
-					up.setLikeUserPosts(ab);
-					String time = userPostService.timeAgoFunction(up.getUserPostCreatedTime());
-					up.setTimeAgo(time);
-
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			for (UserPost up1 : uPosts) {
-				boolean loginUserlikeValue = likeUserPostService.likeOrNotByPost(up1.getUserPostId(), loginUserId);
-				int likeCount = likeUserPostService.likeCountByPost(up1.getUserPostId());
-				up1.setLoginUserLikeOrNot(loginUserlikeValue);
-				up1.setLikeCount(likeCount);
-			}
-
+			List<UserPost> uPosts = userPostService.findNewsFeedPostByUserId(loginUserId);
 			int friendRequestCount = friendSystemService.totalFriendRequest(loginUserId);
 			List<User> friendRequestUser = friendSystemService.findAllFriendRequestUserListById(loginUserId);
 
@@ -254,7 +231,7 @@ public class ProjectController {
 				try {
 					for (UserPost up : uPosts) {
 						ab = likeUserPostService.listLikeCountByPostId(up.getUserPostId());
-						up.setLikeUserPosts(ab);
+						// up.setLikeUserPosts(ab);
 						String time = userPostService.timeAgoFunction(up.getUserPostCreatedTime());
 						logger.info(time);
 						up.setTimeAgo(time);
@@ -301,7 +278,7 @@ public class ProjectController {
 					try {
 						for (UserPost up : uPosts) {
 							likUserPosts1 = likeUserPostService.listLikeCountByPostId(up.getUserPostId());
-							up.setLikeUserPosts(likUserPosts1);
+							// up.setLikeUserPosts(likUserPosts1);
 							String time = userPostService.timeAgoFunction(up.getUserPostCreatedTime());
 							up.setTimeAgo(time);
 							boolean loginUserlikeValue = likeUserPostService.likeOrNotByPost(up.getUserPostId(),
@@ -327,7 +304,7 @@ public class ProjectController {
 						// Binding in Transient fields
 						for (UserPost up : uPosts1) {
 							ab1 = likeUserPostService.listLikeCountByPostId(up.getUserPostId());
-							up.setLikeUserPosts(ab1);
+							// up.setLikeUserPosts(ab1);
 							String time = userPostService.timeAgoFunction(up.getUserPostCreatedTime());
 							up.setTimeAgo(time);
 							boolean loginUserlikeValue = likeUserPostService.likeOrNotByPost(up.getUserPostId(),
@@ -366,42 +343,6 @@ public class ProjectController {
 							return "profile_have_any_relation";
 						}
 
-						// if (status == 0 & lastActionUser == paramUserId) {
-						//
-						// model.addAttribute("friendStatus", status);
-						// model.addAttribute("userPost", uPosts1);
-						//
-						// return "profile_have_any_relation";
-						//
-						// } else if (status == 0 & lastActionUser ==
-						// loginUserId) {
-						// logger.info("Profile Request Sent Profile");
-						//
-						// model.addAttribute("userPost", uPosts1);
-						// return "profile_request_wait_relation";
-						//
-						// } else if (status == 2 & lastActionUser ==
-						// paramUserId) {
-						//
-						// model.addAttribute("userPost", uPosts1);
-						// return "profile_reject_relation";
-						//
-						// } else if (status == 3 & lastActionUser ==
-						// loginUserId) {
-						// logger.info("Profile Block by Login User");
-						// return "profile_block_by_loginuser";
-						//
-						// } else if (status == 3 & lastActionUser ==
-						// paramUserId) {
-						// logger.info("Profile Block by Param user");
-						// return "profile_block_by_paramuser";
-						// } else if (status == 2 & lastActionUser ==
-						// loginUserId) {
-						//
-						// model.addAttribute("userPost", uPosts1);
-						//
-						// return "profile_reject_profile";
-						// }
 					}
 
 				}
@@ -419,7 +360,7 @@ public class ProjectController {
 
 				ab1 = likeUserPostService.listLikeCountByPostId(up.getUserPostId());
 
-				up.setLikeUserPosts(ab1);
+				// up.setLikeUserPosts(ab1);
 				String time = userPostService.timeAgoFunction(up.getUserPostCreatedTime());
 				logger.info(time);
 				up.setTimeAgo(time);
@@ -453,7 +394,6 @@ public class ProjectController {
 	public String homePage(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			model.addAttribute("user", getPrincipal());
 			return "redirect:/";
 		} else {
 			return "login";
@@ -474,7 +414,7 @@ public class ProjectController {
 	public String registerlink(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			model.addAttribute("user", getPrincipal());
+
 			return "redirect:/";
 		} else {
 			return "user_registration";
@@ -793,7 +733,10 @@ public class ProjectController {
 					friendRequestSentUser.add(requestSender);
 				}
 			}
-
+			
+			int friendRequestCount = friendSystemService.totalFriendRequest(loginUserId);
+			
+			model.addAttribute("friendRequestCount", friendRequestCount);
 			model.addAttribute("requestSender", friendRequestSentUser);
 			model.addAttribute("loginUser", getLoginUser());
 			model.addAttribute("loginUserId", loginUserId);
@@ -822,52 +765,30 @@ public class ProjectController {
 		return "edit_user_profile";
 	}
 
-	private String getPrincipal() {
-		String userName = null;
-
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (principal instanceof UserDetails) {
-			userName = ((UserDetails) principal).getUsername();
-
-		} else {
-			userName = principal.toString();
-		}
-		return userName;
-	}
-
 	private User getLoginUser() {
 		User user = null;
-		String email = null;
+		String currentEmail = null;
 
 		try {
-			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-			if (principal instanceof UserDetails) {
-				email = ((UserDetails) principal).getUsername();
+			currentEmail = auth.getName();
 
-			} else {
-				email = principal.toString();
-			}
+			user = userService.findByEmail(currentEmail);
 
-			user = userService.findByEmail(email);
 			return user;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
 		}
+
+		logger.info("Login User Null");
+		return null;
 	}
 
 	@ModelAttribute("roles")
 	List<UserProfile> initializeProfiles() {
 		System.out.println(userProfileService.findAll());
 		return userProfileService.findAll();
-	}
-
-	@ExceptionHandler(StorageFileNotFoundException.class)
-	public ResponseEntity handleStorageFileNotFound(StorageFileNotFoundException exc) {
-		return ResponseEntity.notFound().build();
 	}
 
 }

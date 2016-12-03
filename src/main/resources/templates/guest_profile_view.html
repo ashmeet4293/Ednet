@@ -123,7 +123,7 @@
 				</div>
 			</div>
 
-			<div class="col-lg-5 col-md-5 right_sider">
+			<div class="col-lg-5 col-md-5 ">
 				<div class="row cover_area">
 					<img src="../static/images/bangladesh2.jpg"
 						class="img-responsive img-rounded"
@@ -131,7 +131,7 @@
 				</div>
 				<div class="row">
 						<!-- Post Start -->
-					<div th:replace="layouts/post_feed :: all-post"></div>
+					<div th:replace="layouts/post_feed_guest :: all-post"></div>
 					<!-- Post End -->
 					<div th:unless="${not #lists.isEmpty(userPost)}">
 						<div class="empty_user_post">

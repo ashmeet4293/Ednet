@@ -1,6 +1,6 @@
 <div th:fragment="all-post" th:if="${not #lists.isEmpty(userPost)}">
 	<div class="post_section" th:each="post : ${userPost}">
-		<div class="news_gap"></div>
+		
 		<div class="naz_news_panel">
 			<div class="panel-heading">
 				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-left"
@@ -21,15 +21,17 @@
 			<div class="panel-body">
 				<div th:each="user: ${post.user}"
 					class="col-lg-2 col-md-2 col-sm-3 col-xs-2 post_image_box">
-					<div th:if="${user.profilePicId != 0}">
+					<div th:if="${user.profilePicLink != ''}">
 						<div class="post_image">
-							<img src="../static/images/sylhet.jpg"
+							<a th:href="@{'/users/'+${user.userName}+'/picture/'+${user.profilePicLink}}">
+							<img th:src="@{#{picturelink}+${user.ednetUserId}+'/profile_size_pic/'+${user.profilePicLink}}"
 								class="img-responsive img-rounded"
-								th:src="@{/images/sylhet.jpg}" />
+								 />
+							</a>
 						</div>
 					</div>
 
-					<div th:unless="${user.profilePicId != 0}">
+					<div th:unless="${user.profilePicLink != ''}">
 						<div th:if="${user.gender == 'Male'}">
 							<div class="post_image">
 								<img src="../static/images/profile_male.jpg"

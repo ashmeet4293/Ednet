@@ -1,0 +1,17 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head"></head>
+<body>
+	<div th:replace="layout :: menubar"></div>
+	<div class="full_page">
+		You don't have any rights to view this Picture
+	</div>
+
+
+	<div th:replace="layout :: javascript-load"></div>
+
+	<script src="../static/js/comment_character_counts.js"
+		th:src="@{/js/comment_character_counts.js}"></script>
+
+</body>
+</html>

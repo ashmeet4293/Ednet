@@ -21,7 +21,6 @@ public interface UserPostDao {
 
 	List<UserPost> findByPrivacy(String privacy);
 
-	List<UserPost> findNewsFeedPostByUser(User loginUser, List<User> userObject);
 
 	List<UserPost> friendPost(User user);
 

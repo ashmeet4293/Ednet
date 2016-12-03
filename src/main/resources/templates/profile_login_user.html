@@ -48,19 +48,22 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-5 col-md-5 right_sider">
+			<div class="col-lg-5 col-md-5 ">
 				<!-- Cover Picture for User Profile -->
-				<div class="row cover_area">
+				<div class="row cover_picture">
 					<img src="../static/images/bangladesh2.jpg"
 						class="img-responsive img-rounded"
 						th:src="@{/images/bangladesh2.jpg}" />
 				</div>
 				<div class="row">
-					<div class="news_gap"></div>
-					<div class="each_section">
+					
+					<div class="naz_news_panel background_100">
+				
+
 						<div>
-							<textarea id="statusbox1" name="discription"
-								class="status_box_class" placeholder="Whats on your mind?"> </textarea>
+							<textarea id="statusbox1" th:maxlength="${300}"
+								class="status_box_class" name="discription"
+								placeholder="Whats on your mind?"> </textarea>
 						</div>
 						<div class="row text-center text_area_bottom_box">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
@@ -80,6 +83,7 @@
 								</select>
 							</div>
 						</div>
+
 					</div>
 
 					<div id="new_post_status"></div>
@@ -100,6 +104,7 @@
 
 
 	<div th:replace="layout :: javascript-load"></div>
+	<script src="../static/js/status_submit.js" th:src="@{/js/status_submit.js}"></script> 
 	<script src="../static/js/like_system2.js"
 		th:src="@{/js/like_system2.js}"></script>
 	<script src="../static/js/dislike_system2.js"

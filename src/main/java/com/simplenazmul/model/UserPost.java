@@ -44,9 +44,9 @@ public class UserPost {
 	@Transient
 	private int disLikeCount;
 
-	@OneToMany
-	@JoinColumn(name = "user_post_id")
-	List<LikeUserPost> likeUserPosts = new ArrayList<>();
+//	@OneToMany
+//	@JoinColumn(name = "user_post_id")
+//	List<LikeUserPost> likeUserPosts = new ArrayList<>();
 
 	@Transient
 	private boolean loginUserLikeOrNot;
@@ -126,13 +126,13 @@ public class UserPost {
 		this.disLikeCount = disLikeCount;
 	}
 
-	public List<LikeUserPost> getLikeUserPosts() {
-		return likeUserPosts;
-	}
-
-	public void setLikeUserPosts(List<LikeUserPost> likeUserPosts) {
-		this.likeUserPosts = likeUserPosts;
-	}
+//	public List<LikeUserPost> getLikeUserPosts() {
+//		return likeUserPosts;
+//	}
+//
+//	public void setLikeUserPosts(List<LikeUserPost> likeUserPosts) {
+//		this.likeUserPosts = likeUserPosts;
+//	}
 
 	@Override
 	public int hashCode() {
@@ -166,8 +166,10 @@ public class UserPost {
 	public String toString() {
 		return "UserPost [userPostId=" + userPostId + ", userPostDiscription=" + userPostDiscription
 				+ ", userPostCreatedTime=" + userPostCreatedTime + ", user=" + user + ", privacy=" + privacy
-				+ ", likeCount=" + likeCount + ", disLikeCount=" + disLikeCount + ", likeUserPosts=" + likeUserPosts
-				+ ", loginUserLikeOrNot=" + loginUserLikeOrNot + ", timeAgo=" + timeAgo + "]";
+				+ ", likeCount=" + likeCount + ", disLikeCount=" + disLikeCount + ", loginUserLikeOrNot="
+				+ loginUserLikeOrNot + ", timeAgo=" + timeAgo + "]";
 	}
+
+
 
 }

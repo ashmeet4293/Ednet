@@ -59,10 +59,25 @@ public class UserPicAlbumDaoImpl extends AbstractDao<Integer, UserPicAlbum> impl
 		crit.add(Restrictions.eq("user", user));
 
 		UserPicAlbum userAlbum = (UserPicAlbum) crit.uniqueResult();
+		
+		int albumId = 0;
 
-		int albumId = userAlbum.getAlbumId();
+		if(userAlbum != null){
+			albumId = userAlbum.getAlbumId();
+		}
 
 		return albumId;
+	}
+
+	@Override
+	public UserPicAlbum findUserPicAlbumClassByAlbumCaptionAndUser(String albumCaption, User user) {
+		Criteria crit = createEntityCriteria();
+		crit.add(Restrictions.eq("albumCaption", albumCaption));
+		crit.add(Restrictions.eq("user", user));
+
+		UserPicAlbum userAlbum = (UserPicAlbum) crit.uniqueResult();
+		
+		return userAlbum;
 	}
 
 }

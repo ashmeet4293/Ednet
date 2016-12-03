@@ -68,4 +68,9 @@ public class UserPicAlbumServiceImpl implements UserPicAlbumService {
 		return dao.findUserPicAlbumByAlbumCaptionAndUser(albumCaption, user);
 	}
 
+	@Override
+	public UserPicAlbum findUserPicAlbumClassByAlbumCaptionAndUser(String albumCaption, User user) {
+		return dao.findUserPicAlbumClassByAlbumCaptionAndUser(albumCaption, user);
+	}
+
 }

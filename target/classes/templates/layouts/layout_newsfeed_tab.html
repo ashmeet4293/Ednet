@@ -1,7 +1,6 @@
 <div th:fragment="newsfeed-tab">
 	<div id="tabs">
 		<ul>
-
 			<li><a href="#tabs-2">Skill Test</a></li>
 			<li><a href="#tabs-4">User Ranking</a></li>
 			<li><a href="#tabs-1">Friends</a></li>
@@ -10,11 +9,7 @@
 			<li><a href="#tabs-6">Quiz</a></li>
 		</ul>
 		<div id="tabs-1">
-
-
-
 			<div>
-
 				<div class="panel naz_panel">
 					<div class="panel-heading">Basic Friends Information</div>
 					<div class="panel-body tab_list_table_body ">
@@ -41,14 +36,19 @@
 						<a href="">More Friends Information</a>
 					</div>
 				</div>
-				
-				<div class="panel naz_panel" th:if="${not #lists.isEmpty(friendRequestUser)}">
+
+				<div class="panel naz_panel"
+					th:if="${not #lists.isEmpty(friendRequestUser)}">
 					<div class="panel-heading">All Friend Request</div>
 					<div class="panel-body tab_list_table_body ">
-						<div class="col-lg-4 col-md-4 col-sm-4" th:each="friendRequest : ${friendRequestUser}">
-							
-							<a th:href="@{/users/{username}(username=${friendRequest.userName})}"><span th:text="${#strings.capitalize(friendRequest.firstName)}">First
-									Name</span> <span th:text="${#strings.capitalize(friendRequest.lastName)}">Last
+						<div class="col-lg-4 col-md-4 col-sm-4"
+							th:each="friendRequest : ${friendRequestUser}">
+
+							<a
+								th:href="@{/users/{username}(username=${friendRequest.userName})}"><span
+								th:text="${#strings.capitalize(friendRequest.firstName)}">First
+									Name</span> <span
+								th:text="${#strings.capitalize(friendRequest.lastName)}">Last
 									Name</span></a>
 						</div>
 
@@ -57,23 +57,25 @@
 						<a href="">More Friends Information</a>
 					</div>
 				</div>
-				
-				<div class="panel naz_panel" th:unless="${not #lists.isEmpty(friendRequestUser)}">
-					<div class="panel-heading">All Friend Request</div>
-					<div class="panel-body tab_list_table_body ">
-						There are no Friend Request At this Moment
 
-					</div>
+				<div class="panel naz_panel"
+					th:unless="${not #lists.isEmpty(friendRequestUser)}">
+					<div class="panel-heading">All Friend Request</div>
+					<div class="panel-body tab_list_table_body ">There are no
+						Friend Request At this Moment</div>
 					<div class="panel-footer">
 						<a href="">More Friends Information</a>
 					</div>
 				</div>
-				
-				<div class="panel naz_panel" th:if="${not #lists.isEmpty(friendList)}">
+
+				<div class="panel naz_panel"
+					th:if="${not #lists.isEmpty(friendList)}">
 					<div class="panel-heading">All Friend List</div>
 					<div class="panel-body tab_list_table_body ">
-						<div class="col-lg-4 col-md-4 col-sm-4" th:each="friend : ${friendList}">
-							<a th:href="@{/users/{username}(username=${friend.userName})}"><span th:text="${#strings.capitalize(friend.firstName)}">First
+						<div class="col-lg-4 col-md-4 col-sm-4"
+							th:each="friend : ${friendList}">
+							<a th:href="@{/users/{username}(username=${friend.userName})}"><span
+								th:text="${#strings.capitalize(friend.firstName)}">First
 									Name</span> <span th:text="${#strings.capitalize(friend.lastName)}">Last
 									Name</span></a>
 						</div>
@@ -83,62 +85,48 @@
 						<a href="">More Friends Information</a>
 					</div>
 				</div>
-				
-				<div class="panel naz_panel" th:unless="${not #lists.isEmpty(friendList)}">
-					<div class="panel-heading">All Friend List</div>
-					<div class="panel-body tab_list_table_body ">
-						You don't have any friend yet
 
-					</div>
+				<div class="panel naz_panel"
+					th:unless="${not #lists.isEmpty(friendList)}">
+					<div class="panel-heading">All Friend List</div>
+					<div class="panel-body tab_list_table_body ">You don't have
+						any friend yet</div>
 					<div class="panel-footer">
 						<a href="">More Friends Information</a>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
-		
-		
+
 		<div id="tabs-2">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
-
 					<div class="panel naz_panel">
 						<div class="panel-heading">Participate Skill Test</div>
-
 						<div class="panel-body tab_list_table_body">
-
-
 							<table class="naz_table">
 
 								<tr>
 									<td><a>Java</a></td>
 									<td><a>CSS</a></td>
 									<td><a>Mathmatics</a></td>
-
 								</tr>
 								<tr>
 									<td><a>Hibernate</a></td>
 									<td><a>MYSQL</a></td>
 									<td><a>JDBC</a></td>
-
 								</tr>
 
 								<tr>
 									<td><a>Biology</a></td>
 									<td><a>Management</a></td>
 									<td><a>Architecture</a></td>
-
 								</tr>
 								<tr>
 									<td><a>Software Engineering</a></td>
 									<td><a>Android</a></td>
 									<td><a>JavaSrcipt</a></td>
-
 								</tr>
-
-
 
 							</table>
 						</div>
@@ -146,21 +134,13 @@
 						<div class="panel-footer">
 							<a href="">More Subject</a>
 						</div>
-
 					</div>
-
-
 				</div>
 
-
 				<div class="col-lg-6 col-md-6 col-sm-6">
-
 					<div class="panel naz_panel">
 						<div class="panel-heading">All Time Top Category</div>
-
 						<div class="panel-body tab_list_table_body ">
-
-
 							<table class="naz_table">
 
 								<tr>
@@ -194,28 +174,14 @@
 						<div class="panel-footer">
 							<a href="">More Information</a>
 						</div>
-
 					</div>
-
-
 				</div>
 
 				<div class="col-lg-6 col-md-6 col-sm-6">
-
 					<div class="panel naz_panel">
 						<div class="panel-heading">All Time Top Subject</div>
-
 						<div class="panel-body tab_list_table_body">
-							<!-- <ol>
-													<li>Computers</li>
-													<li>Business</li>
-													<li>Math</li>
-													<li>Biology</li>
-													<li>Physics</li>
-												</ol> -->
-
 							<table class="naz_table">
-
 								<tr>
 									<th class="text-center">Subject</th>
 									<th class="text-center">Point</th>
@@ -247,24 +213,16 @@
 						<div class="panel-footer">
 							<a href="">More Information</a>
 						</div>
-
 					</div>
-
 				</div>
-
 			</div>
 
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
-
 					<div class="panel naz_panel">
 						<div class="panel-heading">Weekly Ranking</div>
-
 						<div class="panel-body tab_list_table_body">
-
-
 							<table class="naz_table">
-
 								<tr>
 									<th class="text-center">Subject</th>
 									<th class="text-center">Your Point</th>
@@ -302,30 +260,20 @@
 									<td>950</td>
 								</tr>
 
-
-
 							</table>
 						</div>
-
 						<div class="panel-footer">
 							<a href="">More Information</a>
 						</div>
-
 					</div>
-
-
 				</div>
 
 				<div class="col-lg-12 col-md-12 col-sm-12">
-
 					<div class="panel naz_panel">
 						<div class="panel-heading">Monthly Ranking</div>
-
 						<div class="panel-body">
 
-
 							<table class="naz_table">
-
 								<tr>
 									<th class="text-center">Subject</th>
 									<th class="text-center">Your Point</th>
@@ -363,106 +311,20 @@
 									<td>1800</td>
 								</tr>
 
-
-
 							</table>
 						</div>
 
 						<div class="panel-footer">
 							<a href="">More Information</a>
 						</div>
-
 					</div>
-
-
 				</div>
-
-
-
 			</div>
 
-
-
 		</div>
-		<div id="tabs-3">
-			<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse
-				potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque
-				rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante.
-				Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-				per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim
-				commodo pellentesque. Praesent eu risus hendrerit ligula tempus
-				pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a,
-				lacus.</p>
-			<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at,
-				semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra
-				justo vitae neque. Praesent blandit adipiscing velit. Suspendisse
-				potenti. Donec mattis, pede vel pharetra blandit, magna ligula
-				faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque.
-				Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi
-				lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean
-				vehicula velit eu tellus interdum rutrum. Maecenas commodo.
-				Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus
-				hendrerit hendrerit.</p>
-			<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse
-				potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque
-				rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante.
-				Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-				per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim
-				commodo pellentesque. Praesent eu risus hendrerit ligula tempus
-				pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a,
-				lacus.</p>
-			<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at,
-				semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra
-				justo vitae neque. Praesent blandit adipiscing velit. Suspendisse
-				potenti. Donec mattis, pede vel pharetra blandit, magna ligula
-				faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque.
-				Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi
-				lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean
-				vehicula velit eu tellus interdum rutrum. Maecenas commodo.
-				Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus
-				hendrerit hendrerit.</p>
-			<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse
-				potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque
-				rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante.
-				Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-				per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim
-				commodo pellentesque. Praesent eu risus hendrerit ligula tempus
-				pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a,
-				lacus.</p>
-			<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at,
-				semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra
-				justo vitae neque. Praesent blandit adipiscing velit. Suspendisse
-				potenti. Donec mattis, pede vel pharetra blandit, magna ligula
-				faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque.
-				Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi
-				lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean
-				vehicula velit eu tellus interdum rutrum. Maecenas commodo.
-				Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus
-				hendrerit hendrerit.</p>
-
-		</div>
-		<div id="tabs-4">
-			<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a,
-				risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris.
-				Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem.
-				Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo.
-				Vivamus sed magna quis ligula eleifend adipiscing. Duis orci.
-				Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam
-				molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut
-				dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique
-				tempus lectus.</p>
-		</div>
-		<div id="tabs-5">
-			<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a,
-				risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris.
-				Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem.
-				Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo.
-				Vivamus sed magna quis ligula eleifend adipiscing. Duis orci.
-				Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam
-				molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut
-				dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique
-				tempus lectus.</p>
-		</div>
+		<div id="tabs-3">University Section will be here</div>
+		<div id="tabs-4">User Ranking will here</div>
+		<div id="tabs-5">user contest group information</div>
 		<div id="tabs-6">Every 4 hours question will be here</div>
 	</div>
 </div>

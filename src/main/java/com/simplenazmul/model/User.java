@@ -87,24 +87,26 @@ public class User {
 	@Column(name = "ednet_user_level")
 	private int userLevel;
 
-	@Column(name = "ednet_user_profile_pic_id")
-	private int profilePicId;
+	@Column(name = "ednet_user_profile_pic_link")
+	private String profilePicLink;
 
 	// @Column(name="ednet_user_dob", nullable=false)
 	// private java.time.LocalDate birthdayDate;
 
-	public int getProfilePicId() {
-		return profilePicId;
-	}
 
-	public void setProfilePicId(int profilePicId) {
-		this.profilePicId = profilePicId;
-	}
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "USER_AND_PROFILE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
 			@JoinColumn(name = "USER_PROFILE_ID") })
 	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+
+	public String getProfilePicLink() {
+		return profilePicLink;
+	}
+
+	public void setProfilePicLink(String profilePicLink) {
+		this.profilePicLink = profilePicLink;
+	}
 
 	@JsonView(WithoutPasswordView.class)
 	public int getEdnetUserId() {
@@ -282,8 +284,10 @@ public class User {
 				+ firstName + ", lastName=" + lastName + ", email=" + email + ", state=" + state + ", gender=" + gender
 				+ ", userPoint=" + userPoint + ", accountCreatedTime=" + accountCreatedTime + ", shortDiscription="
 				+ shortDiscription + ", ednetUserTotalProfileView=" + ednetUserTotalProfileView + ", favQuote="
-				+ favQuote + ", userLevel=" + userLevel + ", profilePicId=" + profilePicId + ", userProfiles="
+				+ favQuote + ", userLevel=" + userLevel + ", profilePicLink=" + profilePicLink + ", userProfiles="
 				+ userProfiles + "]";
 	}
+
+
 
 }

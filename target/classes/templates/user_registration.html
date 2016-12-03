@@ -1,127 +1,90 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="login :: outsite-head">
-
 </head>
-
-
 <body>
 	<div th:replace="login :: login-top-menu"></div>
-    
-    <!--Error Message-->
-    
-    	<div class="container">
-    	<div class="row">
-    		<div class="col-lg-3 col-md-3 col-sm-2">
-            
-            </div>
-            
-             <div class="col-lg-6 col-md-6 col-sm-8 text-center">
-             
-             	<h4 th:if="${param.error}">Something Error</h4>
-             	
+	<!--Error Message-->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-2"></div>
+			<div class="col-lg-6 col-md-6 col-sm-8 text-center">
+
+				<h4 th:if="${param.error}">Something Error</h4>
+
 				<div th:if="${emailExistMessage}">
-					<h4 th:text="${emailExistMessage}">Email already taken by Another User</h4>
+					<h4 th:text="${emailExistMessage}">Email already taken by
+						Another User</h4>
 				</div>
-				
+
 				<div th:if="${userExistMessage}">
-					<h4 th:text="${userExistMessage}">User Name already taken by Another Use</h4>
+					<h4 th:text="${userExistMessage}">User Name already taken by
+						Another Use</h4>
 				</div>
-				
+
 				<div th:if="${otherErrorMessage}">
 					<h4 th:text="${otherErrorMessage}"></h4>
 				</div>
-				
-             	
-            
-            </div>
-            
-             <div class="col-lg-3 col-md-3 col-sm-2">
-            
-            </div>
-    
-    
-    	</div>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <!--End error message-->
-    
-    
-    
-    <div class="container"> 
-	<div class="row">
-        
-            <div class="col-lg-3 col-md-3 col-sm-2">
-            
-            </div>
-            
-             <div class="col-lg-6 col-md-6 col-sm-8">
-             
-             	 <div class="login_logo register_area">
-            
-                       
-                            
-                            
-                            <form th:action="@{/registration}" class="form-signin" th:object="${registrationForm}"  
-							method="POST">
-                                <h2 class="form-signin-heading">Please Sign Up</h2>
-                                
-                                <div class="input-group input-sm">
-									<label class="input-group-addon" for="userName"><i class="fa fa-user-circle" aria-hidden="true"></i></label>
-									<input type="text" name="userName" class="form-control"  placeholder="User Name"
-										required="required" autofocus="autofocus" />
-										
-								</div>
 
-                                <div class="input-group input-sm">
-									<label class="input-group-addon" for="firstName"><i class="fa fa-user"></i></label>
-									<input type="text" name="firstName" class="form-control" placeholder="First Name"
-										required="required"  />
-										
-								</div>
-                                
-                                <div class="input-group input-sm">
-									<label class="input-group-addon" for="lastName"><i class="fa fa-user"></i></label>
-									<input type="text" name="lastName" class="form-control" placeholder="Last Name"
-										required="required" />
-										
-								</div>
-								
-                               
-								
-								 <div class="input-group input-sm">
-									<label class="input-group-addon" for="email"><i class="fa fa-envelope"></i></label>
-									<input type="email" name="email" class="form-control" placeholder="Email"
-										required="required" />
-								</div>
-								
-								<div class="input-group input-sm">
-									<label class="input-group-addon" for="password"><i class="fa fa-key" aria-hidden="true"></i></label>
-									<input type="password" name="password" class="form-control" placeholder="Password"
-										required="required" />
-								</div>
-								
-								<div>
-									 <div class="input-group input-sm float_left hidden">
-										<label class="input-group-addon " for="userProfiles" > User Type</label>
-										<select
-											class="select_pane"  name="userProfiles" required="required">
-											<option value="1" selected="selected">User</option>
-										</select>
-									</div> 
-								</div>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-2"></div>
+		</div>
+	</div>
+	<!--End error message-->
 
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-2"></div>
+			<div class="col-lg-6 col-md-6 col-sm-8">
+				<div class="login_logo register_area">
 
+					<form th:action="@{/registration}" class="form-signin"
+						th:object="${registrationForm}" method="POST">
+						<h2 class="form-signin-heading">Please Sign Up</h2>
+
+						<div class="input-group input-sm">
+							<label class="input-group-addon" for="userName"><i
+								class="fa fa-user-circle" aria-hidden="true"></i></label> <input
+								type="text" name="userName" class="form-control"
+								placeholder="User Name" required="required"
+								autofocus="autofocus" />
+						</div>
+
+						<div class="input-group input-sm">
+							<label class="input-group-addon" for="firstName"><i
+								class="fa fa-user"></i></label> <input type="text" name="firstName"
+								class="form-control" placeholder="First Name"
+								required="required" />
+						</div>
+
+						<div class="input-group input-sm">
+							<label class="input-group-addon" for="lastName"><i
+								class="fa fa-user"></i></label> <input type="text" name="lastName"
+								class="form-control" placeholder="Last Name" required="required" />
+						</div>
+
+						<div class="input-group input-sm">
+							<label class="input-group-addon" for="email"><i
+								class="fa fa-envelope"></i></label> <input type="email" name="email"
+								class="form-control" placeholder="Email" required="required" />
+						</div>
+
+						<div class="input-group input-sm">
+							<label class="input-group-addon" for="password"><i
+								class="fa fa-key" aria-hidden="true"></i></label> <input type="password"
+								name="password" class="form-control" placeholder="Password"
+								required="required" />
+						</div>
+
+						<div>
+							<div class="input-group input-sm float_left hidden">
+								<label class="input-group-addon " for="userProfiles">
+									User Type</label> <select class="select_pane" name="userProfiles"
+									required="required">
+									<option value="1" selected="selected">User</option>
+								</select>
+							</div>
+						</div>
 
 						<div class="input-group input-sm select_pane ">
 							<label class="input-group-addon" for="gender"> Gender</label>
@@ -138,39 +101,27 @@
 							</div>
 						</div>
 
+						<br />
 
+						<button
+							class="btn btn-lg btn-primary btn-block button_color1 round_input"
+							type="submit">Sign Up</button>
+					</form>
+					<br />
 
-						<br/>
+					<p class="text_center">
+						By clicking Sign Up button you are agree to our <a href="">Terms
+							and condition </a>
+					</p>
 
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-2"></div>
 
-						<button class="btn btn-lg btn-primary btn-block button_color1 round_input" type="submit">Sign Up</button>
-                           </form>
-						   <br/>
-						   
-						   <p class="text_center">
-								By clicking Sign Up button you are agree to our <a href="">Terms and condition </a> 
-							</p>
-                   
-                   
-                	
-                </div>    
-            
-            </div>
-            
-             <div class="col-lg-3 col-md-3 col-sm-2">
-            
-            </div>
-            	
-     
-    
-    </div>
-    </div>
-
-
-	
-	
+		</div>
+	</div>
 
 	<div th:replace="login :: login-javasrcipt"></div>
-	
+
 </body>
 </html>

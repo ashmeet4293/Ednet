@@ -21,36 +21,34 @@
 		</div>
 		<div class="panel-body">
 			<div th:each="user: ${post.user}"
-				class="col-lg-2 col-md-2 col-sm-3 col-xs-2 post_image_box">
-
-				<div th:if="${user.profilePicId != 0}">
-					<div class="post_image">
-						<img src="../static/images/sylhet.jpg"
-							class="img-responsive img-rounded" th:src="@{/images/sylhet.jpg}" />
-					</div>
-				</div>
-
-				<div th:unless="${user.profilePicId != 0}">
-					<div th:if="${user.gender == 'Male'}">
+					class="col-lg-2 col-md-2 col-sm-3 col-xs-2 post_image_box">
+					<div th:if="${user.profilePicLink != ''}">
 						<div class="post_image">
-							<img src="../static/images/profile_male.jpg"
+							<img th:src="@{#{picturelink}+${user.ednetUserId}+'/profile_size_pic/'+${user.profilePicLink}}"
 								class="img-responsive img-rounded"
-								th:src="@{/images/profile_male.jpg}" />
+								 />
+						</div>
+					</div>
+
+					<div th:unless="${user.profilePicLink != ''}">
+						<div th:if="${user.gender == 'Male'}">
+							<div class="post_image">
+								<img src="../static/images/profile_male.jpg"
+									class="img-responsive img-rounded"
+									th:src="@{/images/profile_male.jpg}" />
+							</div>
+
 						</div>
 
-					</div>
-
-					<div th:unless="${user.gender == 'Male'}">
-						<div class="post_image">
-							<img src="../static/images/profile_female.jpg"
-								class="img-responsive img-rounded"
-								th:src="@{/images/profile_female.jpg}" />
+						<div th:unless="${user.gender == 'Male'}">
+							<div class="post_image">
+								<img src="../static/images/profile_female.jpg"
+									class="img-responsive img-rounded"
+									th:src="@{/images/profile_female.jpg}" />
+							</div>
 						</div>
-
 					</div>
 				</div>
-
-			</div>
 
 			<div class="col-lg-10 col-md-10 col-sm-9 col-xs-10">
 				<div th:text="${post.userPostDiscription}">Post Discription</div>

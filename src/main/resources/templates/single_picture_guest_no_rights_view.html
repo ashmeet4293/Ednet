@@ -1,0 +1,42 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Morning Star</title>
+<link rel="icon" href="../static/images/favicon.ico"
+	th:href="@{/images/favicon.ico}" />
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+<link href="../static/css/jquery-ui.min.css"
+	th:href="@{/css/jquery-ui.min.css}" rel="stylesheet" media="screen" />
+
+<link href="../static/css/newsfeed1.css" th:href="@{/css/newsfeed1.css}"
+	rel="stylesheet" media="screen" />
+
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+	rel="stylesheet" type="text/css" />
+<link href="../../static/css/guest_profile_view.css"
+	th:href="@{/css/guest_profile_view.css}" rel="stylesheet"
+	media="screen" />
+</head>
+<body>
+	<div class="guest_view_header">
+		<a th:href="@{/login}">Please Login for view Full Details</a>
+	</div>
+	<div class="full_page">
+		You don't have any rights to view this Picture
+	</div>
+
+
+	<div th:replace="layout :: javascript-load"></div>
+
+	<script src="../static/js/comment_character_counts.js"
+		th:src="@{/js/comment_character_counts.js}"></script>
+
+</body>
+</html>

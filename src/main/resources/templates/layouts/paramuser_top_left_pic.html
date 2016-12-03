@@ -1,13 +1,16 @@
 <div th:fragment="param-user-top-left-picture">
 
-	<div th:if="${paramUser.profilePicId != 0}">
+	<div th:if="${paramUser.profilePicLink != ''}">
 		<div class="user_profile_menubar_left">
-			<img src="../static/images/sylhet.jpg"
-				class="img-responsive img-rounded" th:src="@{/images/sylhet.jpg}" />
+			<a th:href="@{'/users/'+${paramUser.userName}+'/picture/'+${paramUser.profilePicLink}}">
+			<img th:src="@{#{picturelink}+${paramUser.ednetUserId}+'/profile_size_pic/'+${paramUser.profilePicLink}}"
+						th:title="@{profile Picture}"
+				class="img-responsive img-rounded total_round"  />
+			</a>
 		</div>
 	</div>
 
-	<div th:unless="${paramUser.profilePicId != 0}">
+	<div th:unless="${paramUser.profilePicLink != ''}">
 		<div th:if="${paramUser.gender == 'Male'}">
 			<div class="user_profile_menubar_left">
 				<img src="../static/images/profile_male.jpg"

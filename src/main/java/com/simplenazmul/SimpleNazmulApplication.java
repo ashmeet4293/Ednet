@@ -13,5 +13,7 @@ public class SimpleNazmulApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SimpleNazmulApplication.class, args);
 	}
+	
+
 
 }
