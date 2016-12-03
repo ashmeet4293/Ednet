@@ -1,36 +1,28 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: site-head"></head>
-
 <body>
-
 	<div>
 		<div th:replace="layout :: menubar"></div>
 	</div>
 
 	<div class="full_page">
 		<h1 class="text-center">You Block This User</h1>
-
 	</div>
 
 	<div>
 		<input type="text" id="param_user_id" class="hidden"
 			th:value="${paramUser.ednetUserId}" />
-		<h2 class="text-center"><a th:href="@{/users/{username}(username=${paramUser.userName})}"
-			onclick="unblock_user()"
-			th:text="'Unblock '+ ${paramUser.firstName}+' ' +${paramUser.lastName} ">Unblock
-			This User</a></h2>
-		
+		<h2 class="text-center">
+			<a th:href="@{/users/{username}(username=${paramUser.userName})}"
+				onclick="unblock_user()"
+				th:text="'Unblock '+ ${paramUser.firstName}+' ' +${paramUser.lastName} ">Unblock
+				This User</a>
+		</h2>
 	</div>
-
-
-
-
-
 
 	<div th:replace="layout :: javascript-load"></div>
 	<script src="../static/js/user_unblock_request.js"
 		th:src="@{/js/user_unblock_request.js}"></script>
-
 </body>
 </html>

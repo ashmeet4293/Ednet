@@ -7,6 +7,4 @@ import com.simplenazmul.model.UserPost;
 public interface SortingMethod {
 
 	List<UserPost> sortingPost(List<UserPost> allPosts);
-	
-	
 }

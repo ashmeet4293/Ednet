@@ -46,21 +46,13 @@
 							
 							<div class="col-lg-3 col-md-3  text-right"
 								th:text="${userPic.privacy}">Public</div>
-
-
 						</div>
-
 					</div>
-
-
 				</div>
-			
-
 			</div>
 
 			<div class="col-lg-4 col-md-4 ">
 				<div class="row">
-
 					<div class="naz_comments_panel">
 						<div>
 							<textarea id="commentbox" th:maxlength="${300}" class=""
@@ -73,8 +65,6 @@
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6  character_counter2">300
 								character</div>
-
-
 						</div>
 					</div>
 
@@ -116,19 +106,14 @@
 						</div>
 					</div>
 					<div class="news_gap"></div>
-
-
-
 				</div>
 			</div>
 		</div>
 	</div>
 
-
 	<div th:replace="layout :: javascript-load"></div>
 
 	<script src="../static/js/comment_character_counts.js"
 		th:src="@{/js/comment_character_counts.js}"></script>
-
 </body>
 </html>
